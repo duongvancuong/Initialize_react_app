@@ -1,22 +1,25 @@
+import { combineActions, handleActions } from 'redux-actions';
+
+import {
+  authticatedAction,
+  authErrorAction,
+  loadingAction,
+} from './actions';
+
 const initialState = {
   isAuthenticated: false,
+  refresh_token: '',
   token: '',
-  expiredAt: '',
+  expired_at: '',
+  isLoading: false,
+  error: '',
 }
 
-const auth = (state = initialState, action) => {
-  switch (action.type) {
-    case 'AUTHENTICATED':
-    return { ...state, ...action.payload };
-    case 'AUTHENTICATE_ERROR':
-      return { ...state }
-    case 'REGISTER_SUCCESS':
-      return { ...state, ...action.payload };
-    case 'LOGOUT_SUCCESS':
-      return { ...action.auth_logout};
-    default:
-      return state
-  }
-}
+const auth = handleActions({
+  [combineActions(authticatedAction, authErrorAction, loadingAction)]: (state, action) => ({
+    ...state, ...action.payload
+  })},
+  initialState
+);
 
-export default auth
+export default auth;

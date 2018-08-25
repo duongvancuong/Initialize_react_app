@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import Header from './Header';
@@ -8,15 +8,15 @@ import Body from './Body';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <Fragment>
         <Router basename={process.env.PUBLIC_URL}>
-          <div className="container-fluid">
+          <Fragment>
             <Header />
             <Body />
             <Footer />
-          </div>
+          </Fragment>
         </Router>
-      </div>
+      </Fragment>
     );
   }
 }
