@@ -4,6 +4,7 @@ import {
   authticatedAction,
   authErrorAction,
   loadingAction,
+  logoutedAction,
 } from './actions';
 
 const initialState = {
@@ -16,7 +17,7 @@ const initialState = {
 }
 
 const auth = handleActions({
-  [combineActions(authticatedAction, authErrorAction, loadingAction)]: (state, action) => ({
+  [combineActions(authticatedAction, authErrorAction, loadingAction, logoutedAction)]: (state, action) => ({
     ...state, ...action.payload
   })},
   initialState
