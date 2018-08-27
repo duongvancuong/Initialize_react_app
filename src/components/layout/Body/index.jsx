@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import LoadableComponent from '../../common/LoadableComponent';
+import PrivateRoute from '../../common/PrivateRoute';
 
 const Home = LoadableComponent(() => import('../../pages/Home'));
 const Contact = LoadableComponent(() => import('../../pages/Contact'));
@@ -14,7 +15,7 @@ export default class componentName extends Component {
       <Fragment>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/contact" component={Contact} />
+          <PrivateRoute exact path="/contact" component={Contact} />
           <Route exact path="/about" component={About} />
           <Route exact path="/login" component={Login} />
           <Route render={() => <div>404 Page Not Found</div>} />
