@@ -4,10 +4,16 @@ import { Route, Switch } from 'react-router-dom';
 import LoadableComponent from '../../common/LoadableComponent';
 import PrivateRoute from '../../common/PrivateRoute';
 
-const Home = LoadableComponent(() => import('../../pages/Home'));
-const Contact = LoadableComponent(() => import('../../pages/Contact'));
-const About = LoadableComponent(() => import('../../pages/About'));
-const Login = LoadableComponent(() => import('../../pages/Login'));
+const Home = LoadableComponent(() => fakeDelay(1000).then(() => import('../../pages/Home')));
+const Contact = LoadableComponent(() => fakeDelay(1000).then(() => import('../../pages/Contact')));
+const About = LoadableComponent(() => fakeDelay(1000).then(() => import('../../pages/About')));
+const Login = LoadableComponent(() => fakeDelay(1000).then(() => import('../../pages/Login')));
+
+const fakeDelay = (ms) => {
+  return new Promise(resolve => {
+    setTimeout(resolve, ms);
+  });
+}
 
 export default class componentName extends Component {
   render() {
