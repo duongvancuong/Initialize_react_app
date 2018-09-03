@@ -3,7 +3,8 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 
 import './lib';
-import './styles/index.css';
+import './styles/base/_globalStyle';
+import './styles/base/_reset';
 import store from './store';
 import App from './components/layout/App';
 import registerServiceWorker from './registerServiceWorker';
