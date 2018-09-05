@@ -1,5 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { colors, font } from '../../../../styles/abstracts/variables.json';
+
 const Wrapper = styled.div`
   padding: 25px;
   margin: auto;
@@ -23,9 +25,16 @@ const Title = styled.h4`
 `;
 const Input = styled.input`
   border-radius: 10px;
+  ${props => props.error && props.submited && css`
+    border-color: ${colors.red};
+  `}
 `;
 const ButtonGroup = styled.div`
   text-align: center;
+`;
+const TextError = styled.p`
+  color: ${colors.red};
+  font-size: ${font.size.smallest}
 `;
 const LogInForm = props => {
   const {
@@ -47,7 +56,7 @@ const LogInForm = props => {
               <Title>Welcome back.</Title>
               {!!errorApi
                 && submitCount > 0
-                && <p className="login-container__error-text">* {errorApi}</p>}
+                && <TextError>* {errorApi}</TextError>}
               <Input
                 type="text"
                 placeholder="username"
@@ -55,11 +64,12 @@ const LogInForm = props => {
                 value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                className={`input-sm chat-input form-control ${errors.email && submitCount > 0 ?
-                  'login-container__error-input' : ''} `} />
+                error={errors.email}
+                submited={submitCount > 0}
+                className="input-sm chat-input form-control" />
               {errors.email
                 && submitCount > 0
-                && <p className="login-container__error-text">* {errors.email}</p>}
+                && <TextError>* {errors.email}</TextError>}
               <br />
               <Input
                 type="password"
@@ -68,11 +78,12 @@ const LogInForm = props => {
                 value={values.password}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                className={`input-sm chat-input form-control ${errors.password && submitCount > 0 ?
-                  'login-container__error-input' : ''} `} />
+                error={errors.email}
+                submited={submitCount > 0}
+                className="input-sm chat-input form-control" />
               {errors.password
                 && submitCount > 0
-                && <p className="login-container__error-text">* {errors.password}</p>}
+                && <TextError>* {errors.password}</TextError>}
               <br/>
               <ButtonGroup className="wrapper">
                 <span className="group-btn">

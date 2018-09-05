@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { media } from '../abstracts/_media';
 
 // Helper function to convert px to em
-export const remy = px => `${px / 16}rem`;
+export const remy = px => `${px / 16}em`;
 
 // Function calculating value for width
 export const getWidth = value => {
