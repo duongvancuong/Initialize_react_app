@@ -1,13 +1,15 @@
-import { put, call, takeLatest, select } from 'redux-saga/effects';
+import { put, call, take, takeLatest, select } from 'redux-saga/effects';
 import { login, logout } from '../../services/auth';
 
 import {
-  requestLoginAction,
-  authticatedAction,
-  authErrorAction,
+  authenticateUser,
+  authenticateUserSuccess,
+  authenticateUserError,
   loadingAction,
-  logoutAction,
-  logoutedAction,
+  logoutUser,
+  logoutUserSuccess,
+  cleanErrorLogin,
+  cleanErrorLoginSuccess,
 } from './actions';
 
 import { getToken } from '../../selectors/authSelector';
@@ -29,16 +31,16 @@ const auth_logout = {
   error: '',
 };
 
-export function* loginUser(data) {
+export function* loginUserSaga(data) {
   try {
     yield put(loadingAction({isLoading: true}));
     const { token, error_code } = yield call(login, data.payload);
     if (error_code) {
-      yield put(authErrorAction({ error: error_code }));
+      yield put(authenticateUserError({ error: error_code }));
     } else {
       const payload = auth_login(token);
       yield [
-        put(authticatedAction(payload)),
+        put(authenticateUserSuccess(payload)),
       ];
     }
     yield put(loadingAction({isLoading: false}));
@@ -48,13 +50,13 @@ export function* loginUser(data) {
   }
 };
 
-export function* logoutUser() {
+export function* logoutUserSaga() {
   try {
     yield put(loadingAction({isLoading: true}));
     const token = yield select(getToken)
     yield call(logout, token);
     yield [
-      put(logoutedAction(auth_logout)),
+      put(logoutUserSuccess(auth_logout)),
     ];
     yield put(loadingAction({isLoading: false}));
   } catch (error) {
@@ -64,14 +66,26 @@ export function* logoutUser() {
 };
 
 function* watchAuthetication() {
-  yield takeLatest(requestLoginAction, loginUser)
+  yield takeLatest(authenticateUser, loginUserSaga)
 }
 
 function* watchLogout() {
-  yield takeLatest(logoutAction, logoutUser)
+  yield takeLatest(logoutUser, logoutUserSaga)
+}
+
+function* watchUnmountComp() {
+  try {
+    while (true) {
+      yield take(cleanErrorLogin);
+      yield put(cleanErrorLoginSuccess({error:''}));
+    }
+  } catch (error) {
+    // TODO
+  }
 }
 
 export default [
   watchAuthetication,
-  watchLogout
+  watchLogout,
+  watchUnmountComp
 ]

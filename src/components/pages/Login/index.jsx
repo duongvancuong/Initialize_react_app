@@ -4,11 +4,15 @@ import { Redirect } from 'react-router-dom';
 import { withFormik } from 'formik';
 
 import LogInForm from './components/LoginForm';
-import { requestLoginAction } from '../../../stores/auth/actions';
+import { authenticateUser, cleanErrorLogin } from '../../../stores/auth/actions';
 import { pwdValidateInput, emailValidateInput } from '../../../utils/inputValidate';
 
 
 class Login extends Component {
+  componentWillUnmount() {
+    this.props.dispatch(cleanErrorLogin());
+  }
+
   render() {
     const { from } = this.props.location.state || { from: { pathname: '/' }}
     const { isAuthenticated, error } = this.props;
@@ -60,11 +64,11 @@ const EnhancedForm = withFormik({
   },
   handleSubmit: (values, bag) => {
     setTimeout(() => {
-      bag.props.dispatch(requestLoginAction(values));
+      bag.props.dispatch(authenticateUser(values));
       bag.setSubmitting(false);
     }, 1000);
   },
-  displayName: 'BasicForm', // helps with React DevTools
+  displayName: 'LoginForm',
 })(Login);
 
 export default connect(mapStateToProps)(EnhancedForm);

@@ -15,7 +15,7 @@ const fakeDelay = (ms) => {
   });
 }
 
-export default class componentName extends Component {
+export default class Body extends Component {
   render() {
     return (
       <Fragment>

@@ -7,10 +7,10 @@ import { media } from '../../../styles/abstracts/_media';
 
 const Wrapper = styled.div`
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-  background: #3fa46a;
+background: ${props => props.theme.colors.blue};
 `;
 const MenuItem = styled(Link)`
-  color: ${props => props.active ? '#ffffff;' : 'black'};
+  color: ${props => props.active ? props.theme.colors.white :  props.theme.colors.black};
   padding: 20px 0;
   font-size: 18px;
   line-height: 25px;
@@ -18,7 +18,7 @@ const MenuItem = styled(Link)`
 
   &:hover {
     text-decoration: none;
-    color: ${props => props.active ? '#ffffff' : 'white'};
+    color: ${props => props.theme.colors.white};
   }
 `;
 const Logo = styled(Link)`

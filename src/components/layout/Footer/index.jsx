@@ -5,9 +5,9 @@ export default class Footer extends Component {
   render() {
     return (
       <footer className="bg-dark text-white">
-        <div className="text-center py-2 lead">Copyright © 2017 - Joel Miguel Valente
-          <p>Visita mi web demo creado con wordpress
-            <br/> con mi theme desde cero
+        <div className="text-center py-2 lead">Copyright © 2017 - CuongDV
+          <p>Visita my web demo
+            <br/> bla bla bla bla bla bla bla bla bla bla bla
           </p>
         </div>
       </footer>

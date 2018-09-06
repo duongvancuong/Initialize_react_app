@@ -1,0 +1,73 @@
+export const theme = {
+  colors: {
+    white: "#fff",
+    grey: "#333",
+    suva_grey: "#929292",
+    text_grey: "#767676",
+    grey_light: "#ccc",
+    error: "#d00",
+    link: "#0e106a",
+    dusty_gray: "#999",
+    boulder: "#777",
+    alto: "#ddd",
+    black: "#000",
+    background_gray: "#dedede",
+    gallery: "#eee",
+    wild_blue_yonder: "#8788b5",
+    peppermint: "#dff0d8",
+    gray_light: "#f7f7f7",
+    mercury: "#e7e7e7",
+    spring_rain: "#aca",
+    primary: "#0e357f",
+    dark_white: "#f6f6f6",
+    orange: "#ff6000",
+    silver: "#bfbfbf",
+    gray: "#e3e3e3",
+    red: "#db3333",
+    silver_chalice: "#aaa",
+    french_gray: "#bbbbbd",
+    concrete: "#f3f3f3",
+    denim: "#1b5ede",
+    blue: "#0080ff",
+    dodger_blue: "#0080ff",
+    border: "#c7c7c7",
+    bg_footer: "#3a3a3a"
+  },
+  font: {
+    size: {
+      smallest: "1rem",
+      smaller: "1.2rem",
+      small: "1.4rem",
+      base: "1.6rem",
+      large: "1.8rem",
+      extra: "2rem",
+      extra_large: "2.2rem",
+      big: "2.4rem",
+      larger: "3rem",
+      largest: "3.2rem",
+      biggest: "3.4rem"
+    },
+    font_family: "'Pacifico', cursive"
+  },
+  size: {
+    xs:    "320px",
+    sm:    "480px",
+    md1:   "640px",
+    md2:   "768px",
+    lg:    "1024px",
+    xl:    "1280px",
+    xxl:   "1440px",
+    xxxl:  "110rem",
+    xsmall: "30rem",
+    small: "40rem",
+    medium: "64rem",
+    large: "90rem",
+    huge: "110rem"
+  },
+  screen_size: {
+    screen_xs: "480px !default",
+    screen_sm: "768px !default",
+    screen_md: "992px !default",
+    screen_lg: "1200px !default"
+  }
+}

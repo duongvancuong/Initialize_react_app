@@ -1,10 +1,11 @@
 import { combineActions, handleActions } from 'redux-actions';
 
 import {
-  authticatedAction,
-  authErrorAction,
+  authenticateUserSuccess,
+  authenticateUserError,
   loadingAction,
-  logoutedAction,
+  logoutUserSuccess,
+  cleanErrorLoginSuccess,
 } from './actions';
 
 const initialState = {
@@ -17,7 +18,13 @@ const initialState = {
 }
 
 const auth = handleActions({
-  [combineActions(authticatedAction, authErrorAction, loadingAction, logoutedAction)]: (state, action) => ({
+  [combineActions(
+    authenticateUserSuccess,
+    authenticateUserError,
+    loadingAction,
+    logoutUserSuccess,
+    cleanErrorLoginSuccess
+  )]: (state, action) => ({
     ...state, ...action.payload
   })},
   initialState
