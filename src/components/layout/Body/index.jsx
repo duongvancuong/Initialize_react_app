@@ -13,7 +13,7 @@ const fakeDelay = (ms) => {
   return new Promise(resolve => {
     setTimeout(resolve, ms);
   });
-}
+};
 
 export default class Body extends Component {
   render() {
@@ -27,6 +27,6 @@ export default class Body extends Component {
           <Route render={() => <div>404 Page Not Found</div>} />
         </Switch>
       </Fragment>
-    )
+    );
   }
 }

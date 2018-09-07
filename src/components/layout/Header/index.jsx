@@ -71,7 +71,7 @@ class Header extends Component {
               <MenuItem to="/contact">Contact</MenuItem>
               <MenuItem to="/about">About</MenuItem>
               {!isAuthenticated && <MenuItem to="/login">Login</MenuItem>}
-              {isAuthenticated && <MenuItem to="#" onClick={() => {handleLogout()}}>Logout</MenuItem>}
+              {isAuthenticated && <MenuItem to="#" onClick={() => {handleLogout();}}>Logout</MenuItem>}
             </GridColumnRight>
           </GridRow>
         </GridContainer>

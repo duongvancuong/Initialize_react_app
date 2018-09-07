@@ -3,8 +3,8 @@ import auth from './stores/auth/reducer';
 
 const rootReducer = {
   auth,
-}
+};
 
-export const createReducer = asyncReducers => combineReducers({ ...rootReducer, ...asyncReducers })
+export const createReducer = asyncReducers => combineReducers({ ...rootReducer, ...asyncReducers });
 
-export default combineReducers(rootReducer)
+export default combineReducers(rootReducer);

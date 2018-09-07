@@ -42,8 +42,8 @@ export const logout = (token) => {
     Accept: 'application/json',
     'Content-Type': 'application/json',
     Authorization: token,
-  }
-  const CONFIG_OPTION_AUTHENTICATION = {...CONFIG_OPTION, headers}
+  };
+  const CONFIG_OPTION_AUTHENTICATION = {...CONFIG_OPTION, headers};
   return AutheticatedRequest(CONFIG_OPTION_AUTHENTICATION).delete({
     url: URL_LOGOUT
   }).then((res)=>{

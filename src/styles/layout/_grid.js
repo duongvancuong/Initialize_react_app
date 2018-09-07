@@ -11,7 +11,7 @@ export const getWidth = value => {
 
   let width = value / 12 * 100;
   return `width: ${width}%;`;
-}
+};
 
 // Function calculating value for Flex
 export const getFlex = value => {
@@ -19,7 +19,7 @@ export const getFlex = value => {
 
   let flex = value / 12 * 100;
   return `flex: 0 0 ${flex}%;`;
-}
+};
 
 // Grid Container
 export const GridContainer = styled.div`

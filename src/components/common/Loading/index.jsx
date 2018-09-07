@@ -40,6 +40,6 @@ const Loading = () => (
       <circle cx="53" cy="15" r="4" />
     </LoadingSpinner>
   </LoadingSpinnerWrapper>
-)
+);
 
 export default Loading;

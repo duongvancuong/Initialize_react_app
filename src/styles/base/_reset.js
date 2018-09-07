@@ -146,4 +146,4 @@ injectGlobal`
     border: 1px solid ${colors.mercury};
     background-color: ${colors.white};
   }
-`
+`;

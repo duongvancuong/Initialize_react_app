@@ -6,7 +6,7 @@ const sizes = {
   small_desktop: 768,
   tablet: 576,
   phone: 376
-}
+};
 
 export const media = Object.keys(sizes).reduce((accumulator, label) => {
   // use em in breakpoints to work properly cross-browser and support users
@@ -16,6 +16,6 @@ export const media = Object.keys(sizes).reduce((accumulator, label) => {
     @media (min-width: ${emSize}rem) {
       ${css(...args)}
     }
-  `
+  `;
   return accumulator;
 }, {});

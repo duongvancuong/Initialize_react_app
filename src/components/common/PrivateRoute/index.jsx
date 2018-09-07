@@ -15,7 +15,7 @@ const mapStateToProps = (state) => {
   const { isAuthenticated } = state.auth;
   return {
     isAuthenticated,
-  }
+  };
 };
 
 export default withRouter(connect(mapStateToProps)(PrivateRoute));

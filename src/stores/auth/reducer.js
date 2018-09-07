@@ -15,7 +15,7 @@ const initialState = {
   expired_at: '',
   isLoading: false,
   error: '',
-}
+};
 
 const auth = handleActions({
   [combineActions(

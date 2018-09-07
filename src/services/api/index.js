@@ -59,7 +59,7 @@ class HttpRequest {
     return axios.request(finalConfig)
       .then(successResponse => Promise.resolve(successResponse))
       .catch((errorResponse) => {
-        return Promise.reject(errorResponse)
+        return Promise.reject(errorResponse);
       });
   }
 }

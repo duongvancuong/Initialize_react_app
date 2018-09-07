@@ -70,4 +70,4 @@ export const theme = {
     screen_md: "992px !default",
     screen_lg: "1200px !default"
   }
-}
+};

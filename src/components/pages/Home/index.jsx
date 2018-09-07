@@ -44,6 +44,6 @@ export default class Home extends Component {
           </GridColumn>
         </GridRow>
       </GridContainer>
-    )
+    );
   }
 }

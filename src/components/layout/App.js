@@ -37,12 +37,12 @@ class App extends Component {
 
 App.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
-}
+};
 
 const mapStateToProps = (state) => {
   return {
     isAuthenticated: getAuthentication(state),
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps)(App);

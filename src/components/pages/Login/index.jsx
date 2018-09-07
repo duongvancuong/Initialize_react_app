@@ -14,12 +14,12 @@ class Login extends Component {
   }
 
   render() {
-    const { from } = this.props.location.state || { from: { pathname: '/' }}
+    const { from } = this.props.location.state || { from: { pathname: '/' }};
     const { isAuthenticated, error } = this.props;
     if (isAuthenticated) {
       return (
         <Redirect to={from} />
-      )
+      );
     }
     return (
       <Fragment>
@@ -43,8 +43,8 @@ const mapStateToProps = (state) => {
   return {
     isAuthenticated,
     error,
-  }
-}
+  };
+};
 
 const EnhancedForm = withFormik({
   mapPropsToValues: () => ({ email: '', password: '' }),

@@ -20,6 +20,6 @@ const LoadingComp = props => {
   } else {
     return null;
   }
-}
+};
 
 export default LoadableComponent;

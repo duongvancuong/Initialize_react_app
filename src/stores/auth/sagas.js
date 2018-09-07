@@ -53,7 +53,7 @@ export function* loginUserSaga(data) {
 export function* logoutUserSaga() {
   try {
     yield put(loadingAction({isLoading: true}));
-    const token = yield select(getToken)
+    const token = yield select(getToken);
     yield call(logout, token);
     yield [
       put(logoutUserSuccess(auth_logout)),
@@ -66,11 +66,11 @@ export function* logoutUserSaga() {
 };
 
 function* watchAuthetication() {
-  yield takeLatest(authenticateUser, loginUserSaga)
+  yield takeLatest(authenticateUser, loginUserSaga);
 }
 
 function* watchLogout() {
-  yield takeLatest(logoutUser, logoutUserSaga)
+  yield takeLatest(logoutUser, logoutUserSaga);
 }
 
 function* watchUnmountComp() {
@@ -88,4 +88,4 @@ export default [
   watchAuthetication,
   watchLogout,
   watchUnmountComp
-]
+];

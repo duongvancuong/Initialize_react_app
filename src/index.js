@@ -11,7 +11,7 @@ import App from './components/layout/App';
 import { theme } from './styles/abstracts/theme';
 import registerServiceWorker from './registerServiceWorker';
 
-const rootEl = document.getElementById('root')
+const rootEl = document.getElementById('root');
 
 render(
   <Provider store={store}>
@@ -25,6 +25,6 @@ registerServiceWorker();
 
 if (module.hot && process.env.NODE_ENV !== 'production') {
   module.hot.accept('./components/layout/App', () => {
-    render(<Provider store={store}><App /></Provider>, rootEl)
-  })
+    render(<Provider store={store}><App /></Provider>, rootEl);
+  });
 }
