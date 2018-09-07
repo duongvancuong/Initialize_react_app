@@ -8,7 +8,7 @@ import './styles/base/_globalStyle';
 import './styles/base/_reset';
 import store from './store';
 import App from './components/layout/App';
-import { theme } from './styles/abstracts/theme';
+import theme from './styles/abstracts/theme';
 import registerServiceWorker from './registerServiceWorker';
 
 const rootEl = document.getElementById('root');
@@ -19,7 +19,7 @@ render(
       <App />
     </ThemeProvider>
   </Provider>,
-  rootEl
+  rootEl,
 );
 registerServiceWorker();
 

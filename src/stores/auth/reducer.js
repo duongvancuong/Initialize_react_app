@@ -3,16 +3,17 @@ import { combineActions, handleActions } from 'redux-actions';
 import {
   authenticateUserSuccess,
   authenticateUserError,
-  loadingAction,
+  loadingUserData,
   logoutUserSuccess,
   cleanErrorLoginSuccess,
+  handleExceptionUserError,
 } from './actions';
 
 const initialState = {
   isAuthenticated: false,
-  refresh_token: '',
+  refreshToken: '',
   token: '',
-  expired_at: '',
+  expiredAt: '',
   isLoading: false,
   error: '',
 };
@@ -21,13 +22,14 @@ const auth = handleActions({
   [combineActions(
     authenticateUserSuccess,
     authenticateUserError,
-    loadingAction,
+    loadingUserData,
     logoutUserSuccess,
-    cleanErrorLoginSuccess
+    cleanErrorLoginSuccess,
+    handleExceptionUserError,
   )]: (state, action) => ({
-    ...state, ...action.payload
-  })},
-  initialState
-);
+    ...state, ...action.payload,
+  }),
+},
+initialState);
 
 export default auth;

@@ -1,4 +1,4 @@
-/* eslint-disable no-console, no-param-reassign */
+/* eslint-disable */
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
     // [::1] is the IPv6 localhost address.

@@ -1,6 +1,7 @@
 import { injectGlobal } from 'styled-components';
 import { colors } from '../abstracts/variables.json';
-injectGlobal`
+
+export default injectGlobal`
   html,
   body,
   div,

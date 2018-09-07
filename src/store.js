@@ -15,8 +15,8 @@ const configureStore = () => {
       applyMiddleware(sagaMiddleware),
       process.env.NODE_ENV === 'development' && window.devToolsExtension
         ? window.devToolsExtension()
-        : f => f
-    )
+        : f => f,
+    ),
   );
   sagaMiddleware.run(rootSaga);
   if (process.env.NODE_ENV === 'development') {

@@ -1,27 +1,23 @@
 import styled from 'styled-components';
 
-import { media } from '../abstracts/_media';
+import media from '../abstracts/_media';
 
-// Helper function to convert px to em
-export const remy = px => `${px / 16}em`;
-
-// Function calculating value for width
-export const getWidth = value => {
+export const remy = px => `${px / 16}rem`;
+/* eslint-disable */
+export const getWidth = (value) => {
   if (!value) return;
 
-  let width = value / 12 * 100;
+  const width = value / 12 * 100;
   return `width: ${width}%;`;
 };
-
-// Function calculating value for Flex
-export const getFlex = value => {
+/* eslint-disable */
+export const getFlex = (value) => {
   if (!value) return;
 
-  let flex = value / 12 * 100;
+  const flex = value / 12 * 100;
   return `flex: 0 0 ${flex}%;`;
 };
 
-// Grid Container
 export const GridContainer = styled.div`
   padding-right: ${remy(15)};
   padding-left: ${remy(15)};
@@ -45,14 +41,14 @@ export const GridContainer = styled.div`
     max-width: ${remy(1140)};
   `}
 `;
-// Grid Row
+
 export const GridRow = styled.div`
   margin-right: ${remy(-15)};
   margin-left: ${remy(-15)};
   display: flex;
   flex-wrap: wrap;
 `;
-// Grid Column
+
 export const GridColumn = styled.div`
   padding-right: ${remy(15)};
   padding-left: ${remy(15)};

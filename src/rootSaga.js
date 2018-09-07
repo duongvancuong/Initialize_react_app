@@ -5,6 +5,6 @@ const run = sagas => sagas.map(saga => saga());
 
 export default function* rootSaga() {
   yield all([
-    ...run(authSagas)
+    ...run(authSagas),
   ]);
 }
