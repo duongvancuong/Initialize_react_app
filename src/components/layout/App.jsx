@@ -7,7 +7,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Body from './Body';
 import { getAuthentication } from '../../selectors/authSelector';
-import { logoutAction } from '../../stores/auth/actions';
+import { logoutUser } from '../../stores/auth/actions';
 
 class App extends Component {
   constructor(props) {
@@ -16,7 +16,8 @@ class App extends Component {
   }
 
   handleLogout() {
-    this.props.dispatch(logoutAction());
+    const { dispatch } = this.props;
+    dispatch(logoutUser());
   }
 
   render() {
@@ -37,12 +38,11 @@ class App extends Component {
 
 App.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
-}
+  dispatch: PropTypes.func.isRequired,
+};
 
-const mapStateToProps = (state) => {
-  return {
-    isAuthenticated: getAuthentication(state),
-  }
-}
+const mapStateToProps = state => ({
+  isAuthenticated: getAuthentication(state),
+});
 
 export default connect(mapStateToProps)(App);

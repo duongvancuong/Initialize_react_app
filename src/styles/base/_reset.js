@@ -1,6 +1,7 @@
 import { injectGlobal } from 'styled-components';
 import { colors } from '../abstracts/variables.json';
-injectGlobal`
+
+export default injectGlobal`
   html,
   body,
   div,
@@ -146,4 +147,4 @@ injectGlobal`
     border: 1px solid ${colors.mercury};
     background-color: ${colors.white};
   }
-`
+`;

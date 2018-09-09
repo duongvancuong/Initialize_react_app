@@ -58,9 +58,7 @@ class HttpRequest {
     const finalConfig = Object.assign({}, this.config, { url, ...config });
     return axios.request(finalConfig)
       .then(successResponse => Promise.resolve(successResponse))
-      .catch((errorResponse) => {
-        return Promise.reject(errorResponse)
-      });
+      .catch(errorResponse => Promise.reject(errorResponse));
   }
 }
 
@@ -70,7 +68,7 @@ export const AutheticatedRequest = (options = {}) => new HttpRequest({
   'X-Auth-Token': `${ACCESSTOKEN_VALUE_PREFIX}`,
 }, options);
 
-export const UnauthenticatedRequest = (options= {}) => new HttpRequest({
+export const UnauthenticatedRequest = (options = {}) => new HttpRequest({
   Accept: 'application/json',
   'Content-Type': 'application/json',
 }, options);

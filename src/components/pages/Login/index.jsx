@@ -1,32 +1,49 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { withFormik } from 'formik';
 
 import LogInForm from './components/LoginForm';
-import { requestLoginAction } from '../../../stores/auth/actions';
+import { authenticateUser, cleanErrorLogin } from '../../../stores/auth/actions';
 import { pwdValidateInput, emailValidateInput } from '../../../utils/inputValidate';
 
 
 class Login extends Component {
+  componentWillUnmount() {
+    const { dispatch } = this.props;
+    dispatch(cleanErrorLogin());
+  }
+
   render() {
-    const { from } = this.props.location.state || { from: { pathname: '/' }}
-    const { isAuthenticated, error } = this.props;
+    const {
+      location,
+      isAuthenticated,
+      error,
+      values,
+      errors,
+      isSubmitting,
+      handleChange,
+      handleBlur,
+      handleSubmit,
+      submitCount,
+    } = this.props;
+    const { from } = location.state || { from: { pathname: '/' } };
     if (isAuthenticated) {
       return (
         <Redirect to={from} />
-      )
+      );
     }
     return (
       <Fragment>
         <LogInForm
-          values={this.props.values}
-          errors={this.props.errors}
-          isSubmitting={this.props.isSubmitting}
-          handleChange={this.props.handleChange}
-          handleBlur={this.props.handleBlur}
-          handleSubmit={this.props.handleSubmit}
-          submitCount={this.props.submitCount}
+          values={values}
+          errors={errors}
+          isSubmitting={isSubmitting}
+          handleChange={handleChange}
+          handleBlur={handleBlur}
+          handleSubmit={handleSubmit}
+          submitCount={submitCount}
           errorApi={error}
         />
       </Fragment>
@@ -34,13 +51,27 @@ class Login extends Component {
   }
 }
 
+Login.propTypes = {
+  location: PropTypes.object.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  error: PropTypes.string.isRequired,
+  values: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
+  isSubmitting: PropTypes.bool.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  handleBlur: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  submitCount: PropTypes.number.isRequired,
+  dispatch: PropTypes.func.isRequired,
+};
+
 const mapStateToProps = (state) => {
   const { isAuthenticated, error } = state.auth;
   return {
     isAuthenticated,
     error,
-  }
-}
+  };
+};
 
 const EnhancedForm = withFormik({
   mapPropsToValues: () => ({ email: '', password: '' }),
@@ -60,11 +91,11 @@ const EnhancedForm = withFormik({
   },
   handleSubmit: (values, bag) => {
     setTimeout(() => {
-      bag.props.dispatch(requestLoginAction(values));
+      bag.props.dispatch(authenticateUser(values));
       bag.setSubmitting(false);
     }, 1000);
   },
-  displayName: 'BasicForm', // helps with React DevTools
+  displayName: 'LoginForm',
 })(Login);
 
 export default connect(mapStateToProps)(EnhancedForm);
