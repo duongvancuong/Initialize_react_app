@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import Header from './Header';
 import Footer from './Footer';
 import Body from './Body';
+import ErrorBoundary from '../../components/common/ErrorBoundary';
 import { getAuthentication } from '../../selectors/authSelector';
 import { logoutUser } from '../../stores/auth/actions';
 
@@ -25,11 +26,11 @@ class App extends Component {
     return (
       <Fragment>
         <Router basename={process.env.PUBLIC_URL}>
-          <Fragment>
+          <ErrorBoundary>
             <Header isAuthenticated={isAuthenticated} handleLogout={this.handleLogout} />
             <Body />
             <Footer />
-          </Fragment>
+          </ErrorBoundary>
         </Router>
       </Fragment>
     );
