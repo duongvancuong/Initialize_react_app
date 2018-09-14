@@ -9,7 +9,7 @@ import media from '../../../styles/abstracts/_media';
 
 const Wrapper = styled.div`
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-background: ${props => props.theme.colors.blue};
+  background: ${props => props.theme.colors.blue};
 `;
 const MenuItem = styled(Link)`
   color: ${props => (props.active ? props.theme.colors.white : props.theme.colors.black)};
