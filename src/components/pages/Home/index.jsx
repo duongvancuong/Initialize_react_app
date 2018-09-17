@@ -7,6 +7,7 @@ import {
   GridRow,
 } from '../../../styles/layout/_grid';
 import WindowExternal from '../../common/WindowExternal';
+import ButtonSocialFacebook from '../../common/ButtonSocialFacebook';
 
 const Text = styled.p`
   text-align: center;
@@ -106,6 +107,12 @@ class Home extends Component {
             )}
           </GridColumn>
         </GridRow>
+        <div>
+          <ButtonSocialFacebook language="en_US" appId={process.env.REACT_APP_FB_APP_ID}>
+            <ButtonSocialFacebook.Like href="https://developers.facebook.com/docs/plugins/" />
+            <ButtonSocialFacebook.Share href="https://developers.facebook.com/docs/plugins/" />
+          </ButtonSocialFacebook>
+        </div>
       </GridContainer>
     );
   }
