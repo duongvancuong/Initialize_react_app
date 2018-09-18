@@ -2,7 +2,7 @@ import { injectGlobal } from 'styled-components';
 import { colors, font } from '../abstracts/variables.json';
 
 export default injectGlobal`
-  @import url('https://fonts.googleapis.com/css?family=Pacifico');
+  @import url('https://fonts.googleapis.com/css?family=Oswald');
 
   *,
   *::before,
