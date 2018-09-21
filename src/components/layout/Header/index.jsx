@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 
 import { GridContainer, GridColumn, GridRow } from '../../../styles/layout/_grid';
 import media from '../../../styles/abstracts/_media';
+import SiteThemeSelect from '../../common/SiteThemeSelect';
 
 const Wrapper = styled.div`
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
@@ -71,6 +72,7 @@ const Header = ({ isAuthenticated, handleLogout }) => (
           <MenuItem to="/about">About</MenuItem>
           {!isAuthenticated && <MenuItem to="/login">Login</MenuItem>}
           {isAuthenticated && <MenuItem to="#" onClick={() => { handleLogout(); }}>Logout</MenuItem>}
+          <SiteThemeSelect />
         </GridColumnRight>
       </GridRow>
     </GridContainer>
