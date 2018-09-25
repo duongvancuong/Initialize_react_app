@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { UnauthenticatedRequest } from './index';
 import config from '../../config';
-import { fakeDate } from '../mock/cryptocurrency';
+import { fakeDateSucc, fakeDateError } from '../mock/cryptocurrency';
 
 const API_BASE = '/v1';
 const API_BASE_URL = config.baseURLCoinMaker;
@@ -34,7 +34,15 @@ export const getAllCryptocurrenciesLatest = () => {
 };
 
 export const getAllCryptocurrenciesLatestFake = () => {
-  return Promise.resolve(fakeDate).then((successfulRes) => {
+  return Promise.resolve(fakeDateSucc).then((successfulRes) => {
     return successfulRes;
   });
+}
+
+export const getAllCryptocurrenciesLatestFakeSuc = (ms) => () => {
+  return new Promise(resolve => setTimeout(() => resolve(fakeDateSucc), ms));
+}
+
+export const getAllCryptocurrenciesLatestFakeFail = (ms) => () => {
+  return new Promise((resolve, reject) => setTimeout(() => reject(fakeDateError), ms));
 }

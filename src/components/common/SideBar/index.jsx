@@ -78,8 +78,8 @@ const SideBar = ({ isAuthenticated, handleLogout }) => (
 );
 
 SideBar.propTypes = {
-  isAuthenticated: PropTypes.bool.isRequired,
   handleLogout: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
 
 export default SideBar;

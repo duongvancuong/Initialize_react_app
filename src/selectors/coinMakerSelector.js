@@ -1,5 +1,5 @@
 /* eslint-disable */
-export const getCryptocurrencyLatest = state => {
+export const getCryptocurrencyLatestSelector = state => {
   const datas = state.cryptocurrency.data;
   const columns = ['name', 'market_cap', 'price', 'volume_24h', 'circulating_supply', 'percent_change_24h'];
   const rows = datas.map(data => {

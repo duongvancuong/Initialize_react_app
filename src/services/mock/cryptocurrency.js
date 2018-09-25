@@ -1,5 +1,5 @@
 /* eslint-disable */
-export const fakeDate = {
+export const fakeDateSucc = {
   'status': {
     'timestamp': '2018-08-30T02:09:24.340Z',
     'error_code': 0,
@@ -969,4 +969,14 @@ export const fakeDate = {
       }
     },
   ]
-}
+};
+
+export const fakeDateError = {
+  "status": {
+    "timestamp": "2018-06-02T22:51:28.209Z",
+    "error_code": 400,
+    "error_message": "Invalid value for \"id\"",
+    "elapsed": 10,
+    "credit_count": 0
+  },
+};

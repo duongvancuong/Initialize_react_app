@@ -69,6 +69,7 @@ const Header = ({ isAuthenticated, handleLogout }) => (
         </GridColumnLogo>
         <GridColumnRight md="10" sm="12">
           <MenuItem active="true" to="/">Home</MenuItem>
+          <MenuItem to="/cryptocurrencies">Cryptocurrencies</MenuItem>
           <MenuItem to="/contact">Contact</MenuItem>
           <MenuItem to="/about">About</MenuItem>
           {!isAuthenticated && <MenuItem to="/login">Login</MenuItem>}
