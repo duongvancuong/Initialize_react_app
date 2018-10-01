@@ -128,6 +128,7 @@
     "@babel/plugin-transform-regenerator": "^7.0.0",
     "@storybook/addon-options": "^3.4.10",
     "@storybook/react": "^3.4.10",
-    "webpack-dashboard": "^2.0.0"
+    "webpack-dashboard": "^2.0.0",
+    "worker-loader": "^2.0.0"
   }
 }
