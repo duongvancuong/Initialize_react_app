@@ -5,6 +5,4 @@ const rootReducer = {
   auth,
 };
 
-export const createReducer = asyncReducers => combineReducers({ ...rootReducer, ...asyncReducers });
-
 export default combineReducers(rootReducer);

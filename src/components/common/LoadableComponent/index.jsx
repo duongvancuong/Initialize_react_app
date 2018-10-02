@@ -50,10 +50,10 @@ LoadingComp.defaultProps = {
 };
 
 LoadingComp.propTypes = {
-  retry: PropTypes.func.isRequired,
-  pastDelay: PropTypes.bool.isRequired,
-  timeOut: PropTypes.bool,
   error: PropTypes.object,
+  pastDelay: PropTypes.bool.isRequired,
+  retry: PropTypes.func.isRequired,
+  timeOut: PropTypes.bool,
 };
 
 export default LoadableComponent;

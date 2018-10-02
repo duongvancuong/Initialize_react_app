@@ -8,7 +8,7 @@ const URL_LOGOUT = '/auth/logout';
 const CONFIG_OPTION = {
   baseURL: config.baseURL,
   timeout: 10000,
-  params:{},
+  params: {},
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',

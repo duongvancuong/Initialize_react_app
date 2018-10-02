@@ -128,13 +128,13 @@ const LogInForm = (props) => {
 
 LogInForm.propTypes = {
   errorApi: PropTypes.string.isRequired,
-  values: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
-  isSubmitting: PropTypes.bool.isRequired,
-  handleChange: PropTypes.func.isRequired,
   handleBlur: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  isSubmitting: PropTypes.bool.isRequired,
   submitCount: PropTypes.number.isRequired,
+  values: PropTypes.object.isRequired,
 };
 
 export default LogInForm;

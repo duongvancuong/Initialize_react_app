@@ -8,7 +8,8 @@ export default function copyStyles(sourceDoc, targetDoc) {
       });
 
       targetDoc.head.appendChild(newStyleEl);
-    } else if (styleSheet.href) { // true for stylesheets loaded from a URL
+    }
+    else if (styleSheet.href) { // true for stylesheets loaded from a URL
       const newLinkEl = sourceDoc.createElement('link');
 
       newLinkEl.rel = 'stylesheet';

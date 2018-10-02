@@ -1,5 +1,6 @@
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
+import { AppContainer } from 'react-hot-loader';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/lib/integration/react';
 
@@ -12,22 +13,38 @@ import registerServiceWorker from './registerServiceWorker';
 import SiteThemeProvider from './context/SiteThemeContext';
 import Loading from './components/common/Loading';
 
-const rootEl = document.getElementById('root');
+export const init = {
+  run() {
+    if (process.env.NODE_ENV !== 'production') {
+      this.render(App);
+      return Promise.resolve();
+    }
+    return this.render(App);
+  },
+  render(Component) {
+    const root = document.getElementById('root');
 
-render(
-  <Provider store={store}>
-    <SiteThemeProvider>
-      <PersistGate loading={<Loading />} persistor={persistor}>
-        <App />
-      </PersistGate>
-    </SiteThemeProvider>
-  </Provider>,
-  rootEl,
-);
+    if (root) {
+      ReactDOM.render(
+        <AppContainer>
+          <Provider store={store}>
+            <SiteThemeProvider>
+              <PersistGate loading={<Loading />} persistor={persistor}>
+                <Component />
+              </PersistGate>
+            </SiteThemeProvider>
+          </Provider>
+        </AppContainer>,
+        root
+      );
+    }
+  },
+};
+
+init.run();
+
 registerServiceWorker();
 
 if (module.hot && process.env.NODE_ENV !== 'production') {
-  module.hot.accept('./components/layout/App', () => {
-    render(<Provider store={store}><App /></Provider>, rootEl);
-  });
+  module.hot.accept('./components/layout/App', () => init.run(App));
 }

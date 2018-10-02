@@ -1,17 +1,17 @@
 import axios from 'axios';
-import config from '../../config';
+import configure from '../../config';
 
 const API_BASE = '/api';
 const ACCESSTOKEN_VALUE_PREFIX = 'Bearer';
 const DEFAULT_CONFIG = {
-  baseURL: config.baseURL + API_BASE,
+  baseURL: configure.baseURL + API_BASE,
   timeout: 10000,
-  params:{},
+  params: {},
 };
 
 class HttpRequest {
   constructor(headers, options) {
-    this.config = Object.assign({}, DEFAULT_CONFIG, { headers, ...options });
+    this.configure = Object.assign({}, DEFAULT_CONFIG, { headers, ...options });
   }
 
   get({ url, params = {}, adapter }) {
@@ -55,7 +55,7 @@ class HttpRequest {
   }
 
   executeRequest(url, config) {
-    const finalConfig = Object.assign({}, this.config, { url, ...config });
+    const finalConfig = Object.assign({}, this.configure, { url, ...config });
     return axios.request(finalConfig)
       .then(successResponse => Promise.resolve(successResponse))
       .catch(errorResponse => Promise.reject(errorResponse));
