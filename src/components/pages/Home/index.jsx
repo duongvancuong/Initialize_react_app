@@ -10,6 +10,7 @@ import ButtonSocialFacebook from '../../common/ButtonSocialFacebook';
 import WebWorker from '../../../utils/webWorker';
 import worker from '../../../workers/worker';
 import WorkerSetup from '../../../workerSetup';
+import { withEventHandlers } from '../../../utils/withEventHandlers';
 
 class Home extends Component {
   constructor(props) {
@@ -63,6 +64,10 @@ class Home extends Component {
     });
   }
 
+  handlerFunc = () => {
+    console.log(123);
+  }
+
   render() {
     const ChildComp = ({ closeWindowPortal, onChangeTextInput }) => (
       <div>
@@ -73,6 +78,16 @@ class Home extends Component {
         </button>
       </div>
     );
+    const handler = {
+      onClick: () => { this.handlerFunc(); },
+    };
+    const Button = () => (
+      <div>
+        <button>Test</button>
+      </div>
+    );
+
+    const ButtonRender = withEventHandlers(handler, Button);
     return (
       <GridContainer>
         <GridRow>
@@ -120,6 +135,8 @@ class Home extends Component {
             <ButtonSocialFacebook.Like href="https://developers.facebook.com/docs/plugins/" />
             <ButtonSocialFacebook.Share href="https://developers.facebook.com/docs/plugins/" />
           </ButtonSocialFacebook>
+          <ButtonRender test="xin chao" onClick={() => console.log(123)} />
+          <button onClick={this.handlerFunc}>test</button>
         </div>
       </GridContainer>
     );
