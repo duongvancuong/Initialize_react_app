@@ -1,14 +1,8 @@
 {
   "presets": [
-    "es2015",
-    "react",
-    "stage-0"
+    "react-app"
   ],
   "plugins": [
-    "styled-components",
-    ["transform-runtime", {
-      "polyfill": false,
-      "regenerator": true
-      }]
+    "styled-components"
   ]
 }

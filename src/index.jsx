@@ -9,7 +9,7 @@ import './styles/base/_globalStyle';
 import './styles/base/_reset';
 import { store, persistor } from './reduxPersistStore';
 import App from './components/layout/App';
-import registerServiceWorker from './registerServiceWorker';
+import * as serviceWorker from './serviceWorker';
 import SiteThemeProvider from './context/SiteThemeContext';
 import Loading from './components/common/Loading';
 
@@ -71,7 +71,7 @@ export const init = {
 
 init.run();
 
-registerServiceWorker();
+serviceWorker.unregister();
 
 if (module.hot && process.env.NODE_ENV !== 'production') {
   module.hot.accept('./components/layout/App', () => init.run(App));

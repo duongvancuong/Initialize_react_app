@@ -7,7 +7,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import Header from './Header';
 import Footer from './Footer';
 import Body from './Body';
-import ErrorBoundary from '../../components/common/ErrorBoundary';
+import ErrorBoundary from '../common/ErrorBoundary';
 import { SiteThemeContext } from '../../context/SiteThemeContext';
 import { getAuthentication } from '../../selectors/authSelector';
 import { logoutUser } from '../../stores/auth/actions';

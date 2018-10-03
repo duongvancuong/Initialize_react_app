@@ -8,7 +8,7 @@ import {
 import WindowExternal from '../../common/WindowExternal';
 import ButtonSocialFacebook from '../../common/ButtonSocialFacebook';
 import WebWorker from '../../../utils/webWorker';
-import worker from '../../../workers/worker';
+import workerApp from '../../../workers/worker';
 import WorkerSetup from '../../../workerSetup';
 
 class Home extends Component {
@@ -33,7 +33,7 @@ class Home extends Component {
   }
 
   async setStateWorker() {
-    this.worker = await new WorkerSetup(worker);
+    this.worker = await new WorkerSetup(workerApp);
     this.setState({
       worker: this.worker,
     });
@@ -64,11 +64,13 @@ class Home extends Component {
   }
 
   render() {
+    const { count, textValue, showPortalWindow, worker } = this.state;
+
     const ChildComp = ({ closeWindowPortal, onChangeTextInput }) => (
       <div>
         <p>Even though I render in a different window, I share state!</p>
         <textarea type="text" onBlur={onChangeTextInput} />
-        <button onClick={() => closeWindowPortal()} >
+        <button type="button" onClick={() => closeWindowPortal()}>
           Close me!`
         </button>
       </div>
@@ -77,17 +79,17 @@ class Home extends Component {
       <GridContainer>
         <GridRow>
           <GridColumn md="12" sm="12">
-            <p className="text-center">Total User Count: {this.state.count}</p>
-            <button className="btn-worker" onClick={this.fetchWebWorker}>Fetch Users with Web Worker</button>
+            <p className="text-center">Total User Count: {count}</p>
+            <button type="button" className="btn-worker" onClick={this.fetchWebWorker}>Fetch Users with Web Worker</button>
           </GridColumn>
         </GridRow>
         <GridRow>
           <GridColumn md="12" sm="12">
-            <p>Example show WindowExternal: <span>{this.state.textValue}</span></p>
-            <button onClick={this.toggleWindowPortal}>
-              {this.state.showPortalWindow ? 'Close the' : 'Open a'} Window Portal
+            <p>Example show WindowExternal: <span>{textValue}</span></p>
+            <button type="button" onClick={this.toggleWindowPortal}>
+              {showPortalWindow ? 'Close the' : 'Open a'} Window Portal
             </button>
-            {this.state.showPortalWindow && (
+            {showPortalWindow && (
               <WindowExternal closeWindowPortal={this.closeWindowPortal}>
                 <ChildComp
                   closeWindowPortal={this.closeWindowPortal}
@@ -99,20 +101,22 @@ class Home extends Component {
         </GridRow>
         <GridRow>
           <GridColumn md="12" sm="12">
-            {this.state.worker && <WebWorker worker={this.state.worker}>
-              {({ data, error, postMessage }) => {
-                if (error) return `Something went wrong: ${error.message}`;
-                if (data) {
-                  return (
-                    <div>
-                      <strong>Received some data:</strong>
-                      <pre>{data.length}</pre>
-                    </div>
-                  );
-                }
-                return <button onClick={() => postMessage('hello')}>Hello</button>;
-              }}
-            </WebWorker>}
+            {worker && (
+              <WebWorker worker={worker}>
+                {({ data, error, postMessage }) => {
+                  if (error) return `Something went wrong: ${error.message}`;
+                  if (data) {
+                    return (
+                      <div>
+                        <strong>Received some data:</strong>
+                        <pre>{data.length}</pre>
+                      </div>
+                    );
+                  }
+                  return <button type="button" onClick={() => postMessage('hello')}>Hello</button>;
+                }}
+              </WebWorker>
+            )}
           </GridColumn>
         </GridRow>
         <div>
