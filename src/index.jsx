@@ -14,12 +14,40 @@ import SiteThemeProvider from './context/SiteThemeContext';
 import Loading from './components/common/Loading';
 
 export const init = {
+  fetchRetries: 0,
+
   run() {
     if (process.env.NODE_ENV !== 'production') {
       this.render(App);
       return Promise.resolve();
     }
-    return this.render(App);
+    this.initOfflinePlugin();
+
+    return Promise
+      .resolve()
+      .then(() => this.render(App))
+      .catch(reason => {
+        if (this.fetchRetries < 3) {
+          console.log('reload'); //eslint-disable-line no-console
+          this.fetchRetries++;
+          this.run();
+        }
+        console.log(reason); //eslint-disable-line no-console
+      });
+  },
+  initOfflinePlugin() {
+    const OfflinePlugin = require('offline-plugin/runtime');
+
+    OfflinePlugin.install({
+      onUpdateReady: () => {
+        console.log('SW Event:', 'onUpdateReady'); //eslint-disable-line no-console
+        OfflinePlugin.applyUpdate();
+      },
+      onUpdated: () => {
+        console.log('SW Event:', 'onUpdated'); //eslint-disable-line no-console
+        window.location.reload();
+      },
+    });
   },
   render(Component) {
     const root = document.getElementById('root');
