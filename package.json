@@ -36,6 +36,7 @@
     "@storybook/react": "^3.4.10",
     "@svgr/webpack": "2.4.1",
     "autoprefixer": "7.1.6",
+    "babel-cli": "^6.26.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "7.2.3",
     "babel-jest": "23.6.0",
@@ -44,6 +45,7 @@
     "babel-plugin-styled-components": "^1.5.1",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-polyfill": "^6.26.0",
+    "babel-preset-flow": "^6.23.0",
     "babel-preset-react-app": "^5.0.2",
     "babel-runtime": "6.26.0",
     "bfj": "6.1.1",
@@ -67,6 +69,8 @@
     "eslint-watch": "^4.0.2",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "2.0.0",
+    "flow-bin": "^0.82.0",
+    "flow-typed": "^2.5.1",
     "fs-extra": "7.0.0",
     "html-webpack-plugin": "^4.0.0-beta.1",
     "jest": "23.6.0",
@@ -107,7 +111,8 @@
     "lint": "eslint --ext=js --ext=jsx src",
     "lint:stylelint": "stylelint 'src/styles/**/*.scss'",
     "test:lint": "run-s lint:**",
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "flow": "flow"
   },
   "eslintConfig": {
     "extends": "react-app"
