@@ -52,6 +52,7 @@ module.exports = {
   testsSetup: resolveApp('src/setupTests.js'),
   proxySetup: resolveApp('src/setupProxy.js'),
   appNodeModules: resolveApp('node_modules'),
+  polyfills: resolveApp('config/polyfills.js'),
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json')),
 };

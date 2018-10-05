@@ -7,7 +7,7 @@ import { PersistGate } from 'redux-persist/lib/integration/react';
 import './lib';
 import './styles/base/_globalStyle';
 import './styles/base/_reset';
-import { store, persistor } from './reduxPersistStore';
+import { store, persistor } from './store';
 import App from './components/layout/App';
 import * as serviceWorker from './serviceWorker';
 import SiteThemeProvider from './context/SiteThemeContext';
