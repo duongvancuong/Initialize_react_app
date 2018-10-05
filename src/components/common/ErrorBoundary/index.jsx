@@ -7,16 +7,18 @@ class ErrorBoundary extends Component {
     this.state = { hasError: false };
   }
 
-  componentDidCatch(error, info) {
+  componentDidCatch() {
     this.setState({ hasError: true });
     // You can also log the error to an error reporting service
   }
 
   render() {
     const { children, errorMessage } = this.props;
-    if (this.state.hasError) {
+    const { hasError } = this.state;
+    if (hasError) {
       return <h1>{errorMessage}</h1>;
     }
+
     return (
       <Fragment>
         {children}

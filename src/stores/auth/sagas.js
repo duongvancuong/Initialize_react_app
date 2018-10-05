@@ -44,14 +44,16 @@ export function* loginUserSaga(data) {
     const response = yield call(login, data.payload);
     if (response.error_code) {
       yield put(authenticateUserError({ error: `${response.error_code}` }));
-    } else {
+    }
+    else {
       const payload = authLogin(response.token);
       yield [
         put(authenticateUserSuccess(payload)),
       ];
     }
     yield put(loadingUserData({ isLoading: false }));
-  } catch (e) {
+  }
+  catch (e) {
     yield put(loadingUserData({ isLoading: false }));
     yield put(handleExceptionUserError({ error: 'Something Wrong!' }));
   }
@@ -66,7 +68,8 @@ export function* logoutUserSaga() {
       put(logoutUserSuccess(authLogout)),
     ];
     yield put(loadingUserData({ isLoading: false }));
-  } catch (error) {
+  }
+  catch (error) {
     yield put(loadingUserData({ isLoading: false }));
     yield put(handleExceptionUserError({ error: 'Something Wrong!' }));
   }
@@ -86,7 +89,8 @@ function* watchUnmountComp() {
       yield take(cleanErrorLogin);
       yield put(cleanErrorLoginSuccess({ error: '' }));
     }
-  } catch (error) {
+  }
+  catch (error) {
     // TODO
   }
 }

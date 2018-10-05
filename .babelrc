@@ -1,14 +1,21 @@
 {
   "presets": [
-    "es2015",
-    "react",
-    "stage-0"
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "entry",
+        "modules": false,
+        "targets": {
+          "browsers": [
+            "last 2 versions",
+            "safari >= 7"
+          ]
+        }
+      }
+    ],
+    "react-app"
   ],
   "plugins": [
-    "styled-components",
-    ["transform-runtime", {
-      "polyfill": false,
-      "regenerator": true
-      }]
+    "styled-components"
   ]
 }

@@ -52,17 +52,17 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-  location: PropTypes.object.isRequired,
-  isAuthenticated: PropTypes.bool.isRequired,
-  error: PropTypes.string.isRequired,
-  values: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired,
-  isSubmitting: PropTypes.bool.isRequired,
-  handleChange: PropTypes.func.isRequired,
-  handleBlur: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-  submitCount: PropTypes.number.isRequired,
   dispatch: PropTypes.func.isRequired,
+  error: PropTypes.string.isRequired,
+  errors: PropTypes.object.isRequired,
+  handleBlur: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  isSubmitting: PropTypes.bool.isRequired,
+  location: PropTypes.object.isRequired,
+  submitCount: PropTypes.number.isRequired,
+  values: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -79,12 +79,14 @@ const EnhancedForm = withFormik({
     const errors = {};
     if (!values.email) {
       errors.email = 'Required';
-    } else if (!emailValidateInput(values.email)) {
+    }
+    else if (!emailValidateInput(values.email)) {
       errors.email = 'Invalid email address';
     }
     if (!values.password) {
       errors.password = 'Required';
-    } else if (!pwdValidateInput(values.password)) {
+    }
+    else if (!pwdValidateInput(values.password)) {
       errors.password = 'Invalid password';
     }
     return errors;

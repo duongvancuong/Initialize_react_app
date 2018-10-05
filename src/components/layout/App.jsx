@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
+import { ConnectedRouter } from 'connected-react-router';
 
 import Header from './Header';
 import Footer from './Footer';
 import Body from './Body';
-import ErrorBoundary from '../../components/common/ErrorBoundary';
+import ErrorBoundary from '../common/ErrorBoundary';
 import { SiteThemeContext } from '../../context/SiteThemeContext';
 import { getAuthentication } from '../../selectors/authSelector';
 import { logoutUser } from '../../stores/auth/actions';
+import history from '../../modules/history';
 
 class App extends Component {
   constructor(props) {
@@ -26,26 +27,26 @@ class App extends Component {
   render() {
     const { isAuthenticated } = this.props;
     return (
-      <SiteThemeContext.Consumer>
-        {({ theme }) => (
-          <ThemeProvider theme={theme}>
-            <Router basename={process.env.PUBLIC_URL}>
+      <ConnectedRouter history={history}>
+        <SiteThemeContext.Consumer>
+          {({ theme }) => (
+            <ThemeProvider theme={theme}>
               <ErrorBoundary>
                 <Header isAuthenticated={isAuthenticated} handleLogout={this.handleLogout} />
                 <Body />
                 <Footer />
               </ErrorBoundary>
-            </Router>
-          </ThemeProvider>
-        )}
-      </SiteThemeContext.Consumer>
+            </ThemeProvider>
+          )}
+        </SiteThemeContext.Consumer>
+      </ConnectedRouter>
     );
   }
 }
 
 App.propTypes = {
-  isAuthenticated: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
