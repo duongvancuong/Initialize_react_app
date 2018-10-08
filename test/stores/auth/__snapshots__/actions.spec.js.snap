@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Actions authenticateUser should return an action 1`] = `
+Object {
+  "type": "AUTHENTICATE_USER",
+}
+`;
+
+exports[`Actions authenticateUserError should return an action 1`] = `
+Object {
+  "type": "AUTHENTICATE_USER_ERROR",
+}
+`;
+
+exports[`Actions authenticateUserSuccess should return an action 1`] = `
+Object {
+  "type": "AUTHENTICATE_USER_SUCCESS",
+}
+`;
+
+exports[`Actions cleanErrorLogin should return an action 1`] = `
+Object {
+  "payload": Object {},
+  "type": "CLEAN_ERROR_LOGIN",
+}
+`;
+
+exports[`Actions cleanErrorLoginSuccess should return an action 1`] = `
+Object {
+  "type": "CLEAN_ERROR_LOGIN_SUCCESS",
+}
+`;
+
+exports[`Actions handleExceptionUserError should return an action 1`] = `
+Object {
+  "payload": Object {},
+  "type": "HANDLE_EXCEPTION_USER_ERROR",
+}
+`;
+
+exports[`Actions loadingUserData should return an action 1`] = `
+Object {
+  "type": "LOADING_USER_DATA",
+}
+`;
+
+exports[`Actions logoutUser should return an action 1`] = `
+Object {
+  "payload": Object {},
+  "type": "LOGOUT_USER",
+}
+`;
+
+exports[`Actions logoutUserSuccess should return an action 1`] = `
+Object {
+  "type": "LOGOUT_USER_SUCCESS",
+}
+`;

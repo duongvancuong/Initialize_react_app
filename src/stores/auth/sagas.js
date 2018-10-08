@@ -47,9 +47,7 @@ export function* loginUserSaga(data) {
     }
     else {
       const payload = authLogin(response.token);
-      yield [
-        put(authenticateUserSuccess(payload)),
-      ];
+      yield put(authenticateUserSuccess(payload));
     }
     yield put(loadingUserData({ isLoading: false }));
   }

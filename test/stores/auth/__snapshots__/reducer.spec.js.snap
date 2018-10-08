@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Auth should handle AUTHENTICATE_USER 1`] = `
+Object {
+  "error": "",
+  "expiredAt": "",
+  "isAuthenticated": false,
+  "isLoading": false,
+  "refreshToken": "",
+  "token": "",
+}
+`;
+
+exports[`Auth should handle AUTHENTICATE_USER_ERROR 1`] = `
+Object {
+  "error": "602",
+  "expiredAt": "",
+  "isAuthenticated": false,
+  "isLoading": false,
+  "refreshToken": "",
+  "token": "",
+}
+`;
+
+exports[`Auth should handle AUTHENTICATE_USER_SUCCESS 1`] = `
+Object {
+  "error": "",
+  "expiredAt": "123123123",
+  "isAuthenticated": true,
+  "isLoading": false,
+  "refreshToken": "123123123ASFCXD",
+  "token": "123123123ASFCXD",
+}
+`;
+
+exports[`Auth should return init state 1`] = `
+Object {
+  "error": "",
+  "expiredAt": "",
+  "isAuthenticated": false,
+  "isLoading": false,
+  "refreshToken": "",
+  "token": "",
+}
+`;
