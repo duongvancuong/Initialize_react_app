@@ -47,6 +47,7 @@ module.exports = {
     'src/**/*.{js,jsx}',
     '!src/lib/**',
     '!src/styles/**',
+    '!src/*.{js,jsx}',
   ],
   coverageThreshold: {
     global: {
