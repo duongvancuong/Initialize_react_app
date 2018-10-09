@@ -65,6 +65,7 @@
     "babel-preset-react-app": "^5.0.2",
     "babel-runtime": "6.26.0",
     "bfj": "6.1.1",
+    "bundlesize": "^0.17.0",
     "case-sensitive-paths-webpack-plugin": "2.1.2",
     "chalk": "2.4.1",
     "classlist-polyfill": "^1.2.0",
@@ -144,7 +145,8 @@
     "lint:stylelint": "stylelint 'src/styles/**/*.scss'",
     "test:lint": "run-s lint:**",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "flow": "flow"
+    "flow": "flow",
+    "bundlesize": "bundlesize"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -154,5 +156,15 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
+  ],
+  "bundlesize": [
+    {
+      "path": "./build/static/css/*.chunk.css",
+      "maxSize": "3 kB"
+    },
+    {
+      "path": "./build/static/js/*.chunk.js",
+      "maxSize": "3 kB"
+    }
   ]
 }
