@@ -10,4 +10,8 @@ export const ActionsTypes = keyMirror({
   CLEAN_ERROR_LOGIN: undefined,
   CLEAN_ERROR_LOGIN_SUCCESS: undefined,
   HANDLE_EXCEPTION_USER_ERROR: undefined,
+  FETCH_CRYPTOCURRENCY_ACTION: undefined,
+  FETCH_CRYPTOCURRENCY_ERROR_ACTION: undefined,
+  FETCH_CRYPTOCURRENCY_SUCC_ACTION: undefined,
+  LOADING_ACTION: undefined,
 });

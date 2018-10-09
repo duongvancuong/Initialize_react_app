@@ -1,6 +1,14 @@
-import { createAction } from 'redux-actions';
+import { createActions } from 'redux-actions';
+import { ActionsTypes } from '../../constants';
 
-export const fetchCryptocurrencyAction = createAction('FETCH_CRYPTOCURRENCY_ACTION');
-export const fetchCryptocurrencyErrorAction = createAction('FETCH_CRYPTOCURRENCY_ERROR_ACTION');
-export const fetchCryptocurrencySuccAction = createAction('FETCH_CRYPTOCURRENCY_SUCC_ACTION');
-export const loadingAction = createAction('LOADING_ACTION');
+export const {
+  fetchCryptocurrencyAction,
+  fetchCryptocurrencyErrorAction,
+  fetchCryptocurrencySuccAction,
+  loadingAction,
+} = createActions({
+  [ActionsTypes.FETCH_CRYPTOCURRENCY_ACTION]: () => {},
+  [ActionsTypes.FETCH_CRYPTOCURRENCY_ERROR_ACTION]: (payload: {}) => (payload),
+  [ActionsTypes.FETCH_CRYPTOCURRENCY_SUCC_ACTION]: (payload: {}) => (payload),
+  [ActionsTypes.LOADING_ACTION]: (payload: {}) => (payload),
+});

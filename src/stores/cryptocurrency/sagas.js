@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { put, call, takeLatest } from 'redux-saga/effects';
+import { all, put, call, takeLatest } from 'redux-saga/effects';
 import {
   getAllCryptocurrenciesLatest,
   getAllCryptocurrenciesLatestFake,
@@ -34,6 +34,8 @@ export function* fetchCryptocurrency() {
 //   yield takeLatest(fetchCryptocurrencyAction, fetchCryptocurrency)
 // }
 
-export default [
-  takeLatest(fetchCryptocurrencyAction, fetchCryptocurrency),
-]
+export default function* root() {
+  yield all([
+    takeLatest(fetchCryptocurrencyAction, fetchCryptocurrency),
+  ]);
+}
