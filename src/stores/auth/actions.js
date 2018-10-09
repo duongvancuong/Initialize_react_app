@@ -1,11 +1,25 @@
-import { createAction } from 'redux-actions';
+// @flow
+import { createActions } from 'redux-actions';
+import { ActionsTypes } from '../../constants';
 
-export const authenticateUser = createAction('AUTHENTICATE_USER');
-export const authenticateUserSuccess = createAction('AUTHENTICATE_USER_SUCCESS');
-export const authenticateUserError = createAction('AUTHENTICATE_USER_ERROR');
-export const loadingUserData = createAction('LOADING_USER_DATA');
-export const logoutUser = createAction('LOGOUT_USER');
-export const logoutUserSuccess = createAction('LOGOUT_USER_SUCCESS');
-export const cleanErrorLogin = createAction('CLEAN_ERROR_LOGIN');
-export const cleanErrorLoginSuccess = createAction('CLEAN_ERROR_LOGIN_SUCCESS');
-export const handleExceptionUserError = createAction('HANDLE_EXCEPTION_USER_ERROR');
+export const {
+  authenticateUser,
+  authenticateUserSuccess,
+  authenticateUserError,
+  loadingUserData,
+  logoutUser,
+  logoutUserSuccess,
+  cleanErrorLogin,
+  cleanErrorLoginSuccess,
+  handleExceptionUserError,
+} = createActions({
+  [ActionsTypes.AUTHENTICATE_USER]: (payload: {}) => (payload),
+  [ActionsTypes.AUTHENTICATE_USER_SUCCESS]: (payload: {}) => (payload),
+  [ActionsTypes.AUTHENTICATE_USER_ERROR]: (payload: {}) => (payload),
+  [ActionsTypes.LOADING_USER_DATA]: (payload: {}) => (payload),
+  [ActionsTypes.LOGOUT_USER]: () => ({}),
+  [ActionsTypes.LOGOUT_USER_SUCCESS]: (payload: {}) => (payload),
+  [ActionsTypes.CLEAN_ERROR_LOGIN]: () => ({}),
+  [ActionsTypes.CLEAN_ERROR_LOGIN_SUCCESS]: (payload: {}) => (payload),
+  [ActionsTypes.HANDLE_EXCEPTION_USER_ERROR]: () => ({}),
+});

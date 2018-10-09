@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Auth should have the expected watchers 1`] = `
+Object {
+  "fork": Array [
+    Object {
+      "@@redux-saga/IO": true,
+      "FORK": Object {
+        "args": Array [
+          "@@redux-saga-test-plan/json/function/actionCreator",
+          "@@redux-saga-test-plan/json/function/loginUserSaga",
+        ],
+        "context": null,
+        "fn": "@@redux-saga-test-plan/json/function/takeLatest",
+      },
+    },
+    Object {
+      "@@redux-saga/IO": true,
+      "FORK": Object {
+        "args": Array [
+          "@@redux-saga-test-plan/json/function/actionCreator",
+          "@@redux-saga-test-plan/json/function/logoutUserSaga",
+        ],
+        "context": null,
+        "fn": "@@redux-saga-test-plan/json/function/takeLatest",
+      },
+    },
+    Object {
+      "@@redux-saga/IO": true,
+      "FORK": Object {
+        "args": Array [
+          "@@redux-saga-test-plan/json/function/actionCreator",
+          "@@redux-saga-test-plan/json/function/cleanErrorLoginSaga",
+        ],
+        "context": null,
+        "fn": "@@redux-saga-test-plan/json/function/takeLatest",
+      },
+    },
+  ],
+  "take": Array [
+    Object {
+      "@@redux-saga/IO": true,
+      "TAKE": Object {
+        "pattern": "@@redux-saga-test-plan/json/function/actionCreator",
+      },
+    },
+    Object {
+      "@@redux-saga/IO": true,
+      "TAKE": Object {
+        "pattern": "@@redux-saga-test-plan/json/function/actionCreator",
+      },
+    },
+    Object {
+      "@@redux-saga/IO": true,
+      "TAKE": Object {
+        "pattern": "@@redux-saga-test-plan/json/function/actionCreator",
+      },
+    },
+  ],
+}
+`;

@@ -17,7 +17,7 @@ module.exports = {
     './',
   ],
   moduleNameMapper: {
-    'store': '<rootDir>/src/store.js',
+    '^store': '<rootDir>/src/store',
     '^.+\\.(css|scss)$': '<rootDir>/test/__setup__/styleMock.js',
     '^(.+\\.(jpe?g|png|gif|ttf|eot|svg|md)|bootstrap.*)$': '<rootDir>/test/__setup__/fileMock.js',
     '^(expose|bundle)': '<rootDir>/test/__setup__/moduleMock.js',
@@ -45,8 +45,9 @@ module.exports = {
   collectCoverage: false,
   collectCoverageFrom: [
     'src/**/*.{js,jsx}',
-    '!src/lib/*',
-    '!src/styles/*',
+    '!src/lib/**',
+    '!src/styles/**',
+    '!src/*.{js,jsx}',
   ],
   coverageThreshold: {
     global: {

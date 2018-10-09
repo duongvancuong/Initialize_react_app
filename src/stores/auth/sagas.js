@@ -1,9 +1,9 @@
 import {
   put,
   call,
-  take,
   takeLatest,
   select,
+  all,
 } from 'redux-saga/effects';
 import { login, logout } from '../../services/auth';
 
@@ -47,9 +47,7 @@ export function* loginUserSaga(data) {
     }
     else {
       const payload = authLogin(response.token);
-      yield [
-        put(authenticateUserSuccess(payload)),
-      ];
+      yield put(authenticateUserSuccess(payload));
     }
     yield put(loadingUserData({ isLoading: false }));
   }
@@ -75,28 +73,19 @@ export function* logoutUserSaga() {
   }
 }
 
-function* watchAuthetication() {
-  yield takeLatest(authenticateUser, loginUserSaga);
-}
-
-function* watchLogout() {
-  yield takeLatest(logoutUser, logoutUserSaga);
-}
-
-function* watchUnmountComp() {
+export function* cleanErrorLoginSaga() {
   try {
-    while (true) {
-      yield take(cleanErrorLogin);
-      yield put(cleanErrorLoginSuccess({ error: '' }));
-    }
+    yield put(cleanErrorLoginSuccess({ error: '' }));
   }
   catch (error) {
-    // TODO
+    yield put(handleExceptionUserError({ error: 'Something Wrong!' }));
   }
 }
 
-export default [
-  watchAuthetication,
-  watchLogout,
-  watchUnmountComp,
-];
+export default function* root() {
+  yield all([
+    takeLatest(authenticateUser, loginUserSaga),
+    takeLatest(logoutUser, logoutUserSaga),
+    takeLatest(cleanErrorLogin, cleanErrorLoginSaga),
+  ]);
+}
